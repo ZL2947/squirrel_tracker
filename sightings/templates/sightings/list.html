@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang = 'en'>
+	<head>
+		<title>Lists of  all squirrel sightings with links to view each sighting </title>
+	</head>
+
+	<body>
+<style>
+	body {
+		padding-left:10px; padding-right:10px;
+	}
+</style>
+	<p><a href='/'>Go to main page</a> </p>
+	<h1> Click below to add a new squirrel </h1>
+	<p><a href = '/sightings/add'> Add Squirrel  </a></p>
+	<h2> Click on any Unique Squirrel ID to edit that Squirrel entry </h2>
+	<ul>
+		{% for sight in sights %}
+		<li> <a href='/sightings/{{sight.Unique_Squirrel_Id}}/'>{{sight.Unique_Squirrel_Id}} </a> </li>
+		{% endfor %}
+	</ul>
+</body>
+</html>
