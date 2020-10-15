@@ -15,8 +15,16 @@
 	<p><a href = '/sightings/add'> Add Squirrel  </a></p>
 	<h2> Click on any Unique Squirrel ID to edit that Squirrel entry </h2>
 	<ul>
-		{% for sight in sights %}
-		<li> <a href='/sightings/{{sight.Unique_Squirrel_Id}}/'>{{sight.Unique_Squirrel_Id}} </a> </li>
+		{% for squirrel in squirrels %}
+			<tr>
+                                <td><a href="{{squirrel.Unique_Squirrel_Id}}/">{{squirrel.Unique_Squirrel_Id }}</a></td>
+                                <td>{{ squirrel.Longitude }}</td>
+                                <td>{{ squirrel.Latitude }}</td>
+                                <td>{{ squirrel.Date }}</td>
+                        	<td>{{ squirrel.Shift }}</td>
+				<td>{{ squirrel.Age }}</td>
+                	</tr>
+		
 		{% endfor %}
 	</ul>
 </body>

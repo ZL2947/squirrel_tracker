@@ -8,7 +8,7 @@ def homepage(request):
     return render(request,'sightings/homepage.html')
 
 def map(request):
-    sights = Sight.object.all()[:100]
+    sights = Sight.objects.all()[:100]
     context = {
             'sights':sights,
             }
@@ -19,7 +19,7 @@ def sighting(request):
     fields = ['Unique_Squirrel_Id','Longtitude','Latitude','Date','Shift','Age']
     context = {
             'squirrels': squirrel,
-            'fields':field
+            'fields':fields
         }
     return render(request, 'sightings/list.html',context)
 
