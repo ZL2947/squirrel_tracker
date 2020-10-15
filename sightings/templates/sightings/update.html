@@ -5,20 +5,13 @@
         </head>
         <body>
 <style>body{padding-left:10px; padding-right:10px;}</style>
-                <p>
-                <br>
-		<strong><h2>Update the Squirrel Sighting</h2>
-                <p>Please use the following form to update the squirrel sighting</p>
-                <hr>
-                <br>
                 <form method='post'>
                         {% csrf_token %}
                         {{form.as_p}}
                         <br>
                         <p>Thank you</p>
                         <input type="submit" name="save">
-                        <br>
                 </form>
-                <br>
+		<p><a href='/'>Go to main page</a></p>
 	</body>
 </html>
