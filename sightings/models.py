@@ -1,6 +1,6 @@
 from django.db import models
 from django.utils.translation import gettext as _
-
+from django.core.validators import MinLengthValidator
 # Create your models here.
 
 class Sight(models.Model):
@@ -12,7 +12,9 @@ class Sight(models.Model):
 
     Unique_Squirrel_Id = models.CharField(
             help_text = _('The unique ID of the squirrel'),
-            max_length = 25,
+            max_length = 100,
+            unique = True,
+            blank = False
             )
     AM = 'AM'
     PM = 'PM'
@@ -84,29 +86,34 @@ class Sight(models.Model):
             blank = True,
             )
 
-    Running = models.NullBooleanField(
+    Running = models.BooleanField(
             help_text = _('Running'),
-            blank=True,
+            max_length = 10,
+            default=False,
     )
 
-    Chasing = models.NullBooleanField(
+    Chasing = models.BooleanField(
             help_text = _('Chasing'),
-            blank=True,
+            max_length = 10,
+            default=False,
     )
 
-    Climbing = models.NullBooleanField(
+    Climbing = models.BooleanField(
             help_text = _('Climbing'),
-            blank=True,
+            max_length = 10,
+            default=False,
     )
 
-    Eating = models.NullBooleanField(
+    Eating = models.BooleanField(
             help_text = _('Eating'),
-            blank=True,
+            max_length = 10,
+            default=False,
     )
 
-    Foraging = models.NullBooleanField(
+    Foraging = models.BooleanField(
             help_text = _('Foraging'),
-            blank=True,
+            max_length = 10,
+            default=False,
     )
 
     Other_Activities = models.CharField(
@@ -116,42 +123,52 @@ class Sight(models.Model):
         blank = True
     )
 
-    Kuks = models.NullBooleanField(
+    Kuks = models.BooleanField(
             help_text = _('Kuks'),
-            blank=True,
+            max_length = 10,
+            default=False,
     )
 
-    Quaas = models.NullBooleanField(
+    Quaas = models.BooleanField(
             help_text = _('Quaas'),
-            blank=True,
+            max_length = 10,
+            default=False,
     )
 
-    Moans = models.NullBooleanField(
+    Moans = models.BooleanField(
             help_text = _('Moans'),
-            blank=True,
+            max_length = 10,
+            default=False,
     )
 
-    Tail_Flags = models.NullBooleanField(
+    Tail_Flags = models.BooleanField(
             help_text = _('Tail_Flags'),
-            blank=True,
+            max_length = 10,
+            default=False,
     )
 
-    Tail_Twitches = models.NullBooleanField(
+    Tail_Twitches = models.BooleanField(
             help_text = _('Tail_Twitches'),
-            blank=True,
+            max_length = 10,
+            default=False,
     )
 
-    Approaches = models.NullBooleanField(
+    Approaches = models.BooleanField(
             help_text = _('Approaches'),
-            blank=True,
+            max_length = 10,
+            default=False,
     )
 
-    Indifferent = models.NullBooleanField(
+    Indifferent = models.BooleanField(
             help_text = _('Indifferent'),
-            blank=True,
+            max_length = 10,
+            default=False,
     )
 
-    Runs_From = models.NullBooleanField(
+    Runs_From = models.BooleanField(
             help_text = _('Runs_From'),
-            blank=True,
+            max_length = 10,
+            default=False,
     )
+    def __str__(self):
+        return self.Unique_Squirrel_Id

@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .models import Sight
-from django.shortcuts import redirect
+from django.shortcuts import redirect,get_object_or_404
 from .forms import SightForm
 # Create your views here.
 
@@ -37,7 +37,7 @@ def add_squirrel(request):
     return render(request,'sightings/add.html',context)
 
 def update(request,Unique_Squirrel_Id):
-    squirrel = Sight.objects.get(Unique_Squirrel_Id=Unique_Squirrel_Id)
+    squirrel = Sight.objects.filter(Unique_Squirrel_Id=Unique_Squirrel_Id).first()
     if request.method == 'POST':
         form = SightForm(request.POST, instance = squirrel)
         if form.is_valid():

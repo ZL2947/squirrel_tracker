@@ -15,7 +15,7 @@ class Command(BaseCommand):
         with open(path, 'rt') as fp:
             reader = csv.DictReader(fp)
             for r in reader:
-                squirrel = Sight(
+                sight = Sight(
                     Longitude=r['X'],
                     Latitude=r['Y'],
                     Unique_Squirrel_Id = r['Unique Squirrel ID'],
@@ -41,4 +41,4 @@ class Command(BaseCommand):
                     Runs_From=strtobool(r['Runs from']),
                  )
 
-                squirrel.save()
+                sight.save()

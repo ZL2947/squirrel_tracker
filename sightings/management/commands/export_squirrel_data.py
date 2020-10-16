@@ -13,30 +13,9 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         with open(options['csv_file'], 'w') as fp:
-            attributes = ['Latitude', 
-            		  'Longitude', 
-            		  'Unique_Squirrel_Id', 
-            		  'Shift', 
-            		  'Date', 
-            		  'Age', 
-            		  'Primary_Fur_Color', 
-            		  'Location',
-                          'Specific_Location',
-                          'Running',
-                          'Chasing',
-                          'Climbing',
-                          'Eating',
-                          'Foraging',
-                          'Other_Activities',
-                          'Kuks',
-                          'Quaas',
-                          'Moans',
-                          'Tail_Flags',
-                          'Tail_Twitches',
-                          'Approaches',
-                          'Indifferent',
-                          'Runs_From']
-            writer = csv.writer(fp, quoting=csv.QUOTE_ALL)
-            writer.writerow(attributes)
+            writer = csv.writer(fp)
+            fields = Sight._meta.fields
             for row in Sight.objects.all():
-                writer.writerow([getattr(row, attribute) for attribute in attributes])
+                r = [getattr(row,field.name) for field in fields]
+                writer.writerow(r)
+            fp.close()
